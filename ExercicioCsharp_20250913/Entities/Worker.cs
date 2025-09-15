@@ -9,7 +9,7 @@ public class Worker
     public double baseSalary { get; set; }
 
     public Department department { get; set; }
-    public List<HourContract> contract;
+    public List<HourContract> listContract = new List<HourContract>();
     
     public Worker()
     {
@@ -25,17 +25,25 @@ public class Worker
 
     public void addContract(HourContract contract)
     {
-        this.contract.Add(contract);
+        listContract.Add(contract);
     }
 
     public void removeContract(HourContract contract)
     {
-        this.contract.Remove(contract);
+        listContract.Remove(contract);
     }
 
     public double income(int year, int month)
     {
-        return 0;
+        double sum = 0;
+        foreach (HourContract contract in listContract)
+        {
+            if (contract.date.Month.Equals(month) && contract.date.Year.Equals(year))
+            {
+                sum += contract.totalValue();
+            }
+        }
+        return sum + baseSalary;
     }
     
 }
