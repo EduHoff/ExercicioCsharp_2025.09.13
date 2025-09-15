@@ -1,6 +1,6 @@
 namespace ExercicioCsharp_20250913.Entities.Enums;
 
-public enum WorkerLevel : int
+public enum WorkerLevel
 {
     JUNIOR,
     MID_LEVEL,
